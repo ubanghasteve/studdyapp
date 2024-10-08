@@ -1,10 +1,11 @@
+<!-- base/templates/base2/activity_component.html -->
 
 <div class="activities">
     <div class="activities__header">
       <h2>Recent Activities</h2>
     </div>
     
-    {% for message in room_messages %}
+    {% for message in room_messages|slice:":2" %}
     <div class="activities__box">
       <div class="activities__boxHeader roomListRoom__header">
         <a href="{% url 'user-profile' message.user.id %}" class="roomListRoom__author">
@@ -40,8 +41,7 @@
     </div>
     {% endfor %}
 
+    <div class="activities__viewMore">
+      <a href="{% url 'activity' %}" class="button">View More Activities</a>
+    </div>
   </div>
-
-
-
-  
